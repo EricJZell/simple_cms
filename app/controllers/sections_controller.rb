@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
   layout false
   def index
-    @sections = Section.all
+    @sections = Section.sorted
   end
 
   def show
@@ -46,7 +46,7 @@ class SectionsController < ApplicationController
     flash[:notice] = "Section Deleted"
     redirect_to(action: :index)
   end
-  
+
   private
 
   def section_params

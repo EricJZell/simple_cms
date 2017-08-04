@@ -15,9 +15,8 @@
       <th>Name</th>
       <th>Visible</th>
       <th>Content Type</th>
-      <th>Content</th>
       <th>Page</th>
-      <th>Action</th>
+      <th>Actions</th>
     </tr>
     <% @sections.each do |section| %>
       <tr>
@@ -25,7 +24,6 @@
         <td> <%= section.name %> </td>
         <td class="center"> <%= section.visible ? "Yes" : "No" %> </td>
         <td> <%= section.content_type %> </td>
-        <td> <%= section.content %> </td>
         <td class="center"> <%= section.page.name %> </td>
         <td class="actions">
           <%= link_to("Show", {action: 'show', id: section.id}, class: 'action show') %>

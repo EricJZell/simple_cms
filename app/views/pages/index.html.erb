@@ -16,6 +16,7 @@
       <th>Permalink</th>
       <th>Visible</th>
       <th>Subject</th>
+      <th>Sections</th>
       <th>Action</th>
     </tr>
     <% @pages.each do |page| %>
@@ -25,6 +26,7 @@
         <td> <%= page.permalink %> </td>
         <td class="center"> <%= page.visible ? "Yes" : "No" %> </td>
         <td class="center"> <%= page.subject.name %> </td>
+        <td class="center"> <%= page.sections.size %> </td>
         <td class="actions">
           <%= link_to("Show", {action: 'show', id: page.id}, class: 'action show') %>
           <%= link_to("Edit", {action: 'edit', id: page.id}, class: 'action edit') %>
