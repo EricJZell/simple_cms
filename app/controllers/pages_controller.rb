@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   layout 'admin'
 
-  before_action :confirm_logged_id
+  before_action :confirm_logged_in
 
   def index
     @pages = Page.sorted

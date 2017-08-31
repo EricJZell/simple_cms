@@ -42,6 +42,8 @@ class AdminUser < ActiveRecord::Base
   validate :username_is_allowed
   # validate :no_new_users_on_thursday, on: :create
 
+  scope :sorted, lambda { order(last_name: :asc, first_name: :asc) }
+
   def username_is_allowed
     if FORBIDDEN_USERNAMES.include?(username)
       errors.add(:username, "has been restricted from use")
@@ -52,6 +54,10 @@ class AdminUser < ActiveRecord::Base
     if Time.now.wday == 4
       errors[:base] << "No new users on Thursday"
     end
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 
 end

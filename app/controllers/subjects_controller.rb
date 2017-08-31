@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
 
   layout 'admin'
 
-  before_action :confirm_logged_id
+  before_action :confirm_logged_in
 
   def index
     @subjects = Subject.sorted
