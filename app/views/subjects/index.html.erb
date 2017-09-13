@@ -1,4 +1,5 @@
 <% @page_title = "Subjects" %>
+<%= link_to("<< Back to Admin Menu", {controller: :access, action: :index}, class: 'back-link') %>
 <div class="subjects index">
   <h2>Subjects</h2>
 
@@ -26,6 +27,7 @@
           <%= link_to("Show", {action: 'show', id: subject.id}, class: 'action show') %>
           <%= link_to("Edit", {action: 'edit', id: subject.id}, class: 'action edit') %>
           <%= link_to("Delete", {action: 'delete', id: subject.id}, class: 'action delete') %>
+          <%= link_to("View Pages", {controller: 'pages', subject_id: subject.id}, class: 'action pages') %>
         </td>
       </tr>
     <% end %>
