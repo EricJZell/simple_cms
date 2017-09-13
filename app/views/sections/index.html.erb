@@ -1,8 +1,9 @@
 <% @page_title = "Sections" %>
+<%= link_to("<< Back to Page", {controller: :pages, subject_id: @page.subject_id}, class: 'back-link') %>
 <div class="sections index">
   <h2>Sections</h2>
 
-  <%= link_to("Add new section", {action: :new}, class: 'action new') %>
+  <%= link_to("Add new section", {action: :new, page_id: @page.id}, class: 'action new') %>
 
   <table class="listing" summary="Section List">
     <tr class="header">
@@ -14,16 +15,16 @@
       <th>Actions</th>
     </tr>
     <% @sections.each do |section| %>
-      <tr>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td> <%= section.position %> </td>
         <td> <%= section.name %> </td>
         <td class="center"> <%= status_tag(section.visible) %> </td>
         <td> <%= section.content_type %> </td>
         <td class="center"> <%= section.page.name %> </td>
         <td class="actions">
-          <%= link_to("Show", {action: 'show', id: section.id}, class: 'action show') %>
-          <%= link_to("Edit", {action: 'edit', id: section.id}, class: 'action edit') %>
-          <%= link_to("Delete", {action: 'delete', id: section.id}, class: 'action delete') %>
+          <%= link_to("Show", {action: 'show', id: section.id, page_id: @page.id}, class: 'action show') %>
+          <%= link_to("Edit", {action: 'edit', id: section.id, page_id: @page.id}, class: 'action edit') %>
+          <%= link_to("Delete", {action: 'delete', id: section.id, page_id: @page.id}, class: 'action delete') %>
         </td>
       </tr>
     <% end %>
