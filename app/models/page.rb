@@ -1,14 +1,14 @@
 class Page < ActiveRecord::Base
 
   belongs_to :subject
-  has_many :sections
+  has_many :sections, dependent: :destroy
   has_and_belongs_to_many :editors, class_name: "AdminUser"
 
   acts_as_list scope: :subject
 
   before_validation :add_default_permalink
   after_save :touch_subject
-  after_destroy :delete_related_sections
+  #after_destroy :delete_related_sections replace by dependent: :destroy
 
 
   validates_presence_of :name
@@ -35,7 +35,7 @@ class Page < ActiveRecord::Base
     #essentially just subject.update_attribute(updated_at: Time.now)
   end
 
-  def delete_related_sections #could be implemented with :dependant_destroy
+  def delete_related_sections #could be implemented with dependant: :destroy
     self.sections.each do |section|
       section.destroy
     end
