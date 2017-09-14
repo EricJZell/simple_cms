@@ -4,7 +4,7 @@
   <h2>Subjects</h2>
 
   <%= link_to(
-    image_tag('plus_sign.png', size: '11x11', alt: '+') + " Add new subject", {action: :new}, class: 'action new'
+    image_tag('plus_sign.png', size: '11x11', alt: '+') + " Add new subject", new_subject_path, class: 'action new'
   ) %>
   <div>
     <%= pluralize(@subjects.size, 'subject') %> found
@@ -24,10 +24,10 @@
         <td class="center"> <%= status_tag(subject.visible) %> </td>
         <td class="center"> <%= subject.pages.size %> </td>
         <td class="actions">
-          <%= link_to("Show", {action: 'show', id: subject.id}, class: 'action show') %>
-          <%= link_to("Edit", {action: 'edit', id: subject.id}, class: 'action edit') %>
-          <%= link_to("Delete", {action: 'delete', id: subject.id}, class: 'action delete') %>
-          <%= link_to("View Pages", {controller: 'pages', subject_id: subject.id}, class: 'action pages') %>
+          <%= link_to("Show", subject_path(subject), class: 'action show') %>
+          <%= link_to("Edit", edit_subject_path(subject), class: 'action edit') %>
+          <%= link_to("Delete", delete_subject_path(subject), class: 'action delete') %>
+          <%= link_to("View Pages", subject_pages_path(subject), class: 'action pages') %>
         </td>
       </tr>
     <% end %>

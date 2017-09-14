@@ -1,5 +1,5 @@
 <% @page_title = "Section Details" %>
-<%= link_to("Back to List", {action: 'index', page_id: @page.id}, class: 'back-link') %>
+<%= link_to("Back to List", subject_page_sections_path(@page.subject, @page), class: 'back-link') %>
 
 <div class="sections show">
   <h2>Show Section</h2>
